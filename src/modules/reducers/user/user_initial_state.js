@@ -1,5 +1,8 @@
-// var C = require('../../register/constants/register_constants.js')
+var registerConstants = require('../../register/constants/register_constants.js')
 
 module.exports = {
-  metamask_status: false
+  metamaskStatus: {
+    status: registerConstants.METAMASK_STATUS_NOT_LOADED,
+    network: registerConstants.METAMASK_NETWORK_NOT_LOADED
+  }
 }

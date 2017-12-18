@@ -6,7 +6,7 @@ module.exports = function (currentstate = initialState, action) {
     case registerConstants.CHECK_METAMASK:
       return {
         ...currentstate,
-        metamask_status: action.metamask_status
+        metamaskStatus: action.metamaskStatus
       }
     default: return currentstate
   }

@@ -18,7 +18,7 @@ firebase.initializeApp(config)
 
 const store = configureStore()
 
-setTimeout(function () {
+window.addEventListener('load', function () {
   store.dispatch(checkMetamask())
 })
 

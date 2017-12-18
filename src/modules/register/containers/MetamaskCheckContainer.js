@@ -8,7 +8,7 @@ import { checkMetamask } from '../actions/register_actions'
 class MetamaskCheckContainer extends Component {
   render () {
     let p = this.props
-    switch (p.user.metamask_status) {
+    switch (p.user.metamaskStatus.status) {
       case true:
         return (
           <RegisterScene />
