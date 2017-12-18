@@ -4,7 +4,7 @@ import Root from './scenes/Root'
 import { AppContainer } from 'react-hot-loader'
 import configureStore, { history } from './store/configureStore'
 import * as firebase from 'firebase'
-
+import { checkMetamask } from './modules/register/actions/register_actions'
 var config = {
   apiKey: 'AIzaSyAoohB8XbCd3c4mTunaAN4lu87YHODr4q0',
   authDomain: 'emploreum.firebaseapp.com',
@@ -17,6 +17,10 @@ var config = {
 firebase.initializeApp(config)
 
 const store = configureStore()
+
+setTimeout(function () {
+  store.dispatch(checkMetamask())
+})
 
 ReactDOM.render(
   <AppContainer>

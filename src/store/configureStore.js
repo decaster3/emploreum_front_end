@@ -3,7 +3,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import { routerMiddleware } from 'react-router-redux'
-import rootReducer from '../modules/main_reducer'
+import rootReducer from '../modules/reducers/main_reducer'
 import reduxPromise from 'redux-promise'
 export const history = createHistory()
 
@@ -40,8 +40,8 @@ function configureStoreDev (initialState) {
 
   if (module.hot) {
     // Добавление хот реплесмента для редюсеров
-    module.hot.accept('../modules/main_reducer', () => {
-      const nextReducer = require('../modules/main_reducer').default
+    module.hot.accept('../modules/reducers/main_reducer', () => {
+      const nextReducer = require('../modules/reducers/main_reducer').default
       store.replaceReducer(nextReducer)
     })
   }

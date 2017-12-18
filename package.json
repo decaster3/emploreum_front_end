@@ -36,7 +36,8 @@
     "redux": "3.6.0",
     "redux-promise": "0.5.3",
     "redux-thunk": "2.1.0",
-    "universal-cookie": "2.1.0"
+    "universal-cookie": "2.1.0",
+    "web3": "^1.0.0-beta.26"
   },
   "devDependencies": {
     "autoprefixer": "7.1.2",

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class MetamaskCheckScene extends Component {
+class RegisterScene extends Component {
   render () {
     return (
       <div>
-        Hey
+        Metamask is on
       </div>
     )
   }
 }
 
-export default MetamaskCheckScene
+export default RegisterScene
