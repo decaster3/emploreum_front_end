@@ -8,6 +8,11 @@ module.exports = function (currentstate = initialState, action) {
         ...currentstate,
         metamaskStatus: action.metamaskStatus
       }
+    case registerConstants.SET_USER_ROLE:
+      return {
+        ...currentstate,
+        role: action.role
+      }
     default: return currentstate
   }
 }

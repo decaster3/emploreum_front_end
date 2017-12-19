@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import RegisterScene from '../../../scenes/register/RegisterScene'
-import MetamaskOffScene from '../../../scenes/register/MetamaskOffScene'
+import RegisterContainer from './RegisterContainer'
+import MetamaskOffScene from '../scenes/MetamaskOffScene'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { checkMetamask } from '../actions/register_actions'
 
 class MetamaskCheckContainer extends Component {
   render () {
     let p = this.props
     switch (p.user.metamaskStatus.status) {
       case true:
-        return (
-          <RegisterScene />
-        )
+        if (p.user.metamaskStatus.address) {
+          return (
+            <RegisterContainer />
+          )
+        } else {
+          return (
+            <MetamaskOffScene address={false} />
+          )
+        }
       case false:
         return (
           <MetamaskOffScene />
@@ -33,13 +37,4 @@ function mapStateToProps (state) {
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators(
-    {
-      checkMetamask: checkMetamask
-    },
-    dispatch
-  )
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MetamaskCheckContainer)
+export default connect(mapStateToProps, null)(MetamaskCheckContainer)

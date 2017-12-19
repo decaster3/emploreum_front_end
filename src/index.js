@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Root from './scenes/Root'
+import Root from './Root'
 import { AppContainer } from 'react-hot-loader'
 import configureStore, { history } from './store/configureStore'
 import * as firebase from 'firebase'
-import { checkMetamask } from './modules/register/actions/register_actions'
+import { checkMetamaskOnLoad } from './modules/register/actions/register_actions'
 var config = {
   apiKey: 'AIzaSyAoohB8XbCd3c4mTunaAN4lu87YHODr4q0',
   authDomain: 'emploreum.firebaseapp.com',
@@ -19,7 +19,7 @@ firebase.initializeApp(config)
 const store = configureStore()
 
 window.addEventListener('load', function () {
-  store.dispatch(checkMetamask())
+  store.dispatch(checkMetamaskOnLoad())
 })
 
 ReactDOM.render(
@@ -31,8 +31,8 @@ ReactDOM.render(
 
 // NOTE: хот реплейсмент при появлении новых верхних элементов в дереве редаксa
 if (module.hot) {
-  module.hot.accept('./scenes/Root', () => {
-    const NewRoot = require('./scenes/Root').default
+  module.hot.accept('./Root', () => {
+    const NewRoot = require('./Root').default
     ReactDOM.render(
       <AppContainer>
         <NewRoot store={store} history={history} />
