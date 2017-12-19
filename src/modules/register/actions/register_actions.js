@@ -44,6 +44,7 @@ export function register (props) {
   return function (dispatch, getState) {
     console.log(props)
     console.log(getState().user.metamaskStatus.address)
+    console.log(getState().user.role)
   }
 }
 
