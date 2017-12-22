@@ -11,8 +11,9 @@
     To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token in /webpack.config.prod.js on line 55.
    -->
   <% if (htmlWebpackPlugin.options.trackJSToken) { %>
-  <script>window._trackJs = {token: '<%= htmlWebpackPlugin.options.trackJSToken %>'};</script>
-  <script src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
+    <script>window._trackJs = {token: '<%= htmlWebpackPlugin.options.trackJSToken %>'};</script>
+    <script src='https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js'></script>
+    <script src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <% } %>
 

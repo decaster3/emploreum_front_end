@@ -40,16 +40,42 @@ export function checkMetamaskOnLoad () {
     }
   }
 }
+
 export function register (props) {
   return function (dispatch, getState) {
-    console.log(props)
-    console.log(getState().user.metamaskStatus.address)
-    console.log(getState().user.role)
+    const address = getState().user.metamaskStatus.address
+    console.log('creating transaction')
+    employeeAuthContract.registerEmployee(
+      address,
+      props.firstName,
+      props.lastName,
+      props.passport,
+      {from: address, gas: 1400000}
+    )
+      .then(data => {
+        console.log('registeration complite!')
+        console.log('transaction hash: ', data.tx)
+        dispatch(signIn(address))
+      })
+  }
+}
+
+export function signIn (address) {
+  return function (dispatch, getState) {
+    employeeAuthContract.getEmployee(address).then(user => {
+      console.log('sign in as: ', user)
+      dispatch({
+        type: registerConstants.SIGN_IN,
+        firstName: user[0],
+        lastName: user[1]
+      })
+    })
   }
 }
 
 export function setRole (role) {
   return function (dispatch) {
+    console.log(123);
     dispatch({type: registerConstants.SET_USER_ROLE, role: role})
   }
 }

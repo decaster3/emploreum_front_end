@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "7"
+script:
+  - echo "Deploy!!"
+install:
+  - npm install -g firebase-tools
+  - npm install
+after_success:
+  - npm run build
+  - rm -rf ./frontend_deploy/public
+  - mv ./dist ./frontend_deploy/public
+  - cd ./frontend_deploy
+  - firebase deploy --project emploreum-b3df5 --token $FIREBASE_TOKEN

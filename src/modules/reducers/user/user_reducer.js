@@ -13,6 +13,14 @@ module.exports = function (currentstate = initialState, action) {
         ...currentstate,
         role: action.role
       }
+    case registerConstants.SIGN_IN:
+      return {
+        ...currentstate,
+        firstName: action.firstName,
+        lastName: action.lastName,
+        passport: action.passport,
+        status: registerConstants.LOGGED_IN
+      }
     default: return currentstate
   }
 }

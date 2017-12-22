@@ -15,7 +15,7 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist",
-    "build": "babel-node tools/build.js && npm run open:dist",
+    "build": "babel-node tools/build.js",
     "open:cover": "opn ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
@@ -37,6 +37,7 @@
     "redux-form": "^7.2.0",
     "redux-promise": "0.5.3",
     "redux-thunk": "2.1.0",
+    "truffle-contract": "^3.0.1",
     "universal-cookie": "2.1.0",
     "web3": "^1.0.0-beta.26"
   },

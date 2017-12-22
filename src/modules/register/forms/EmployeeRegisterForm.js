@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { register } from '../actions/register_actions'
 import { renderField } from './Field'
+import normalizePassport from './normalizing/passport_narmolizing'
 
 class EmployeeRegisterForm extends Component {
   render () {
@@ -12,8 +13,9 @@ class EmployeeRegisterForm extends Component {
     return (
       <form onSubmit={handleSubmit(this.props.register)}>
         <h3>Employee</h3>
-        <Field name='name' type='text' component={renderField} label='Name' />
-        <Field name='email' type='text' component={renderField} label='Email' />
+        <Field name='firstName' type='text' component={renderField} label='First name' />
+        <Field name='lastName' type='text' component={renderField} label='Last name' />
+        <Field name='passport' type='text' component={renderField} label='Pasport' normalize={normalizePassport} />
         {this.props.user.metamaskStatus.address}
         <button type='submit'>Submit</button>
       </form>

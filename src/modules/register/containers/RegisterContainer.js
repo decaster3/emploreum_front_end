@@ -22,6 +22,7 @@ class RegisterContainer extends Component {
       case registerConstants.EMPLOYEE:
         return (
           <div>
+            
             Metamask is on
             <EmployeeRegisterForm />
             <button
