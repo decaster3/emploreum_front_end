@@ -16,16 +16,6 @@ var config = {
 }
 firebase.initializeApp(config)
 
-var contractInfo = require('./blockchain/JCR.json')
-var contract = require('truffle-contract')
-let Empl = contract(contractInfo)
-
-window.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-Empl.setProvider(window.web3.currentProvider)
-console.log(window.web3.currentProvider)
-window.contract = Empl.at('0xca0fbefaefa9c4614676ae2af2a54f620a5a2d44')
-console.log(window.web3)
-
 const store = configureStore()
 
 ReactDOM.render(

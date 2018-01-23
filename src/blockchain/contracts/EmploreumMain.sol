@@ -1,15 +1,15 @@
 pragma solidity ^0.4.0;
 contract EmploreumMain {
 
-  struct Employee{
-      uint32 id;
-      address employeeAddr; // адрес работника
-      string firstName; //имя работника
-      string lastName; //фамилия работника
-      uint jobCounter; //количество работ работника
-      address[] jobProposals;
-      uint32[] history; //история работы работника
-  }
+    struct Employee {
+        uint32 id;
+        address employeeAddr; // адрес работника
+        string firstName; //имя работника
+        string lastName; //фамилия работника
+        uint jobCounter; //количество работ работника
+        address[] jobProposals;
+        uint32[] history; //история работы работника
+    }
 
  mapping(address => Employee) employee_list;
  mapping(uint32 => address) employee_addresses;
