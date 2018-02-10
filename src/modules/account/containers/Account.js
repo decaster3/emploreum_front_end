@@ -11,14 +11,36 @@ class Account extends Component {
   }
   componentDidMount () {
     // console.log(contractLibrary)
-    var web3 = contractLibrary.initWeb3()
-    var contractInfo = require('../../contract_library/abi/Main.json')
-    var address = '0x118E5B7539ceb7d6293388a51a6c3fAbfDD458b4'
+    contractLibrary.initWeb3()
+    var begin = (new Date()).getTime()
+    var contractInfo = require('../../contract_library/abi/Contract.json')
+    var address = '0x24959b8bECaCA482225aE24EF0d7b415e1c1c84a'
+    let gas = 4465034
+    // contractLibrary.createContract(contractInfo, gas, [], [], 1519827609, 1716924800, '0xF2f757BAE0F8681Da6315cED951b3ac566CB5ED7', '0xF54934698F6D4Daa0D6F8354A7599629DBAcb9EE', Math.pow(10, 12)).then(contract => {
+    //   console.log(contract)
+    // })
     contractLibrary.readContractFromAddress(contractInfo, address).then(contract => {
-      contract.send(web3.utils.toWei('1', 'ether')).then((data) => {
-        console.log(data)
-        console.log('sent')
+      console.log(contract)
+      // contract.newEmployee("_firstName", "_lastName", "_email", 1, '0x002c7E60484a0B65034C5D70b887Eee4A2C0FFbb', [], [], []).then((data) => {
+      //   console.log(data)
+      //   console.log('created')
+      // })
+      // contract.getEmployee(0).then(data => {
+      //   console.log('contract data: ', data)
+      // })
+      // contract.newCompany('company 1', 1, '0x004120f424F83417C68109Cc8522594c22528d3c').then(data => {
+      //   console.log('contract data: ', data)
+      // })
+      contract.getContractStatus().then(data => {
+        console.log('contract data: ', data.toString())
+        var end = (new Date()).getTime()
+        console.log(end - begin);
       })
+      // contract.newContract([], [], 1519827609, 1716924800,
+      // '0xF2f757BAE0F8681Da6315cED951b3ac566CB5ED7', '0xF54934698F6D4Daa0D6F8354A7599629DBAcb9EE',
+      // Math.pow(10, 12)).then(data => {
+      //   console.log('contract data: ', data)
+      // })
     })
 
     // contract.newEmployee("_firstName", "_lastName", "_email", 1, '0x002c7E60484a0B65034C5D70b887Eee4A2C0FFbb', [], [], []).then(data => {
