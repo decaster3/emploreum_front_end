@@ -15,15 +15,17 @@ export function initWeb3 () {
 // return Promise with contract instance
 
 export function readContract (contractInfo) {
-  let contract = initContract(contractInfo)
-  return contract.deplyed()
+  return initContract(contractInfo).then(contract => {
+    return contract.deplyed()
+  })
 }
 
 // return Promise with contract instance
 
 export function readContractFromAddress (contractInfo, address) {
-  let contract = initContract(contractInfo)
-  return contract.at(address)
+  return initContract(contractInfo).then(contract => {
+    return contract.at(address)
+  })
 }
 
 // return Promise with contract instance
@@ -39,8 +41,16 @@ function initContract (contractInfo) {
     throw new Web3InitError()
   }
 
-  let contract = contractService(contractInfo)
+  var contract = contractService(contractInfo)
   contract.setProvider(web3.currentProvider)
 
-  return contract
+  return new Promise((resolve, reject) => {
+    web3.eth.getAccounts((error, accounts) => {
+      contract.defaults({from: accounts[0]})
+      resolve(contract)
+    })
+  })
+
+
+
 }
